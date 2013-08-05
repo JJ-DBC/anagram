@@ -3,9 +3,10 @@ get '/' do
   erb :index
 end
 
-get '/word' do
-  word = Word.new(term: params[:user_input], 
+post '/' do
+  word = Word.new(term: params[:user_input].chomp.downcase, 
     sorted: params[:user_input].chomp.downcase.split('').sort.join(''))
   @anagrams = word.anagrams
-  redirect to("/?anagrams=#{@anagrams}")
+
+  erb :index
 end

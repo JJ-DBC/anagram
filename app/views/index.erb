@@ -1,12 +1,16 @@
 <div class="container">
+
   <h1>Anagram Finder</h1>
   <% if @anagrams %>
-    <p>Matching anagrams: <% @anagrams.each do |ana| %></p>
-       <p>  <%= ana %></p>
-    <% end %>
+    <% p @anagrams %>
+    <p>Matching anagrams:</p>
+    <ol>
+      <% @anagrams.each do |ana| %>
+       <li><%=  ana %></li>
+      <% end %>
+    </ol>
   <% end %>
-
-  <form action="/word" method="post">
+  <form action="/" method="post">
     Enter word to find all anagrams: 
     <br>
     <input type="text" name="user_input">

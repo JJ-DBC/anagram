@@ -1,7 +1,11 @@
 class Word < ActiveRecord::Base
   
-
   def anagrams
-    Word.where(sorted: self.sorted)
+    anagramed_words = []
+    Word.where(sorted: self.sorted).find_each do |word|
+      anagramed_words << word.term
+    end
+
+    anagramed_words
   end
 end
